@@ -6,7 +6,7 @@ ruby '2.7.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use pg as the database for Active Record
-gem 'pg', '~> 0.18.4'
+gem 'pg','~> 1.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -43,3 +43,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'validates_timeliness', '~> 6.0.0.alpha1'
 gem "active_model_serializers", "~> 0.10.6"
 gem 'chronic', '~> 0.10.2'
+
+gem 'devise'
+gem 'devise-jwt'
+
