@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :last_name
       t.string :phone
       t.string :address
-      t.references :role, polymorphic: true
+      t.integer :role, default: 0
 
       t.timestamps
     end

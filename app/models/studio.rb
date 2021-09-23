@@ -1,5 +1,5 @@
 class Studio < ApplicationRecord
-    belongs_to :teacher
+    belongs_to :teacher, class_name: :User
     has_many :families, dependent: :destroy
     has_many :students, through: :families
     has_many :parents, through: :families

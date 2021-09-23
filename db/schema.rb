@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_21_190425) do
+ActiveRecord::Schema.define(version: 2021_09_23_010131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,24 +52,15 @@ ActiveRecord::Schema.define(version: 2021_09_21_190425) do
     t.index ["jti"], name: "index_jwt_blacklists_on_jti"
   end
 
-  create_table "parents", force: :cascade do |t|
-    t.string "secondary_phone"
-    t.boolean "primary_contact"
-    t.bigint "family_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["family_id"], name: "index_parents_on_family_id"
-  end
-
-  create_table "students", force: :cascade do |t|
+  create_table "student_profiles", force: :cascade do |t|
     t.string "grade"
     t.boolean "adult"
     t.integer "make_up_credits"
     t.integer "status"
-    t.bigint "family_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["family_id"], name: "index_students_on_family_id"
+    t.index ["user_id"], name: "index_student_profiles_on_user_id"
   end
 
   create_table "studios", force: :cascade do |t|
@@ -80,19 +71,12 @@ ActiveRecord::Schema.define(version: 2021_09_21_190425) do
     t.index ["teacher_id"], name: "index_studios_on_teacher_id"
   end
 
-  create_table "teachers", force: :cascade do |t|
-    t.string "instrument"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "phone"
     t.string "address"
-    t.string "role_type"
-    t.bigint "role_id"
+    t.integer "role", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email", default: "", null: false
@@ -103,15 +87,13 @@ ActiveRecord::Schema.define(version: 2021_09_21_190425) do
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
+    t.bigint "family_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["family_id"], name: "index_users_on_family_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["role_type", "role_id"], name: "index_users_on_role"
   end
 
-  add_foreign_key "events", "students"
-  add_foreign_key "events", "teachers"
   add_foreign_key "families", "studios"
-  add_foreign_key "parents", "families"
-  add_foreign_key "students", "families"
-  add_foreign_key "studios", "teachers"
+  add_foreign_key "student_profiles", "users"
+  add_foreign_key "users", "families"
 end

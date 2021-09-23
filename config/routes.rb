@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+  resources :users, only: :index
+
   devise_for :users,
     path: '',
     path_names: {
@@ -10,7 +11,8 @@ Rails.application.routes.draw do
     controllers: {
       sessions: 'sessions',
       registrations: 'registrations'
-    }
+    }, 
+    defaults: { format: :json }
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

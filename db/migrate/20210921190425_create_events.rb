@@ -1,8 +1,8 @@
 class CreateEvents < ActiveRecord::Migration[6.1]
   def change
     create_table :events do |t|
-      t.references :teacher, null: false, foreign_key: true
-      t.references :student, null: true, foreign_key: true
+      t.references :teacher, null: false
+      t.references :student, null: true
       t.boolean :all_day
       t.datetime :start
       t.datetime :end
