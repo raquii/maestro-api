@@ -1,5 +1,5 @@
 class StudentProfile < ApplicationRecord
-    belongs_to :student, class_name: :User
+    belongs_to :user
 
-    has_many :events, dependent: :nullify
+    has_many :events_as_student, class_name: :Event, foreign_key: :student_id, dependent: :nullify
 end
