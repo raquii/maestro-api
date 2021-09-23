@@ -1,3 +1,3 @@
 class StudioSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :teacher
 end
