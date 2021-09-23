@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   belongs_to :family, optional: true
   has_one :studio, foreign_key: :teacher_id, dependent: :destroy
-  has_many :students, through: :family
+  has_many :children, through: :family
   has_many :students, through: :studio
 
   enum role: [:teacher, :student, :guardian, :admin]
