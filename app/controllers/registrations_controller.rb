@@ -1,15 +1,10 @@
 class RegistrationsController < Devise::RegistrationsController
     respond_to :json
-    after_action :set_role, only: [:create]
   
     private
-    def set_role
-        @resource.update(role: selected_role)
-    end
-   
     def respond_with(resource, _opts = {})
         register_success && return if resource.persisted?
-
+    
         register_failed
     end
 
