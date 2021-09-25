@@ -2,6 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
     respond_to :json
   
     private
+
     def respond_with(resource, _opts = {})
         register_success && return if resource.persisted?
     
@@ -13,6 +14,8 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     def register_failed
-        render json: { message: "Something went wrong." }
+        render json: { message: resource.errors }
     end
+
+    
 end
