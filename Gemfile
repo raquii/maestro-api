@@ -54,3 +54,5 @@ gem 'devise-jwt'
 
 
 gem "cancancan", "~> 3.3"
+
+gem "rack-cors", "~> 1.1"
