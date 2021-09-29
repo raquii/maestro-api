@@ -44,7 +44,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'validates_timeliness', '~> 6.0.0.alpha1'
-gem "active_model_serializers", "~> 0.10.6"
+
 gem 'chronic', '~> 0.10.2'
 
 gem 'devise'
@@ -56,3 +56,5 @@ gem 'devise-jwt'
 gem "cancancan", "~> 3.3"
 
 gem "rack-cors", "~> 1.1"
+
+gem "jsonapi-serializer", "~> 2.2"

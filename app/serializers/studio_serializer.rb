@@ -1,3 +1,6 @@
-class StudioSerializer < ActiveModel::Serializer
-  attributes :id, :name, :teacher
+class StudioSerializer
+  include JSONAPI::Serializer
+  set_key_transform :camel_lower
+  
+  attributes :name, :teacher
 end
