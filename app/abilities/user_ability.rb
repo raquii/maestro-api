@@ -4,12 +4,13 @@ class UserAbility
         
         return unless user.present?
         can [:read,:update], User, id: user.id
+        can [:read], User, id: user.family.teacher_id
 
         return unless user.guardian?
         can [:read,:update], User, family_id: user.family_id
 
         return unless user.teacher?
-        can :manage, User, family: { studio: {teacher: user}}
+        can :manage, User, family: {teacher: user}
 
         return unless user.admin?
         can :manage, User
