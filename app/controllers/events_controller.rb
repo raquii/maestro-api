@@ -1,9 +1,6 @@
 class EventsController < ApplicationController
-
-    def current_ability
-        @current_ability ||= EventAbility.new(current_user)
-    end
-
+    load_and_authorize_resource
+    
     def index
        
     end
