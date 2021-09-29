@@ -15,7 +15,14 @@ class User < ApplicationRecord
   has_many :students, through: :studio
 
   has_many :events, foreign_key: :teacher_id, dependent: :destroy
-  has_many :events_as_student, through: :student_profile
+  has_many :events_as_student, foreign_key: :student_id, class_name: :Event
+
+  def get_family_events
+    events=self.children.map do |c|
+      c.events_as_student
+    end
+    events.flatten
+  end
 
   enum role: [:teacher, :student, :guardian, :admin]
 end
