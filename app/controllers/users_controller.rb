@@ -8,12 +8,12 @@ class UsersController < ApplicationController
 
     def index
         users = User.all
-        render json: users
+        render json: UserSerializer.new(users)
     end
 
     def show
         user = current_user
-        render json: user
+        render json: UserSerializer.new(user)
     end
 
     def update
