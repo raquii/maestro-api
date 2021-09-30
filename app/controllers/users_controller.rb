@@ -1,15 +1,13 @@
 class UsersController < ApplicationController
-    load_and_authorize_resource
-    skip_authorization_check :only => :index
-    skip_before_action :authenticate_user!, only: :index
 
     def current_ability
         @current_ability ||= UserAbility.new(current_user).merge(StudioAbility.new(current_user))
     end
 
     def index
-        users = User.all
-        render json: UserSerializer.new(users)
+        authorize! :index, User
+        @users = User.accessible_by(current_ability)
+        render json: UserSerializer.new(@users)
     end
 
     def show
@@ -18,7 +16,19 @@ class UsersController < ApplicationController
     end
 
     def update
+        @user = find_user
+        if can? :edit, @user
+            @user.update!(user_params)
+            render json: UserSerializer.new(@user)
+        end
+    end
 
+    def destroy
+        @user = find_user
+        if can? :destroy, @user
+            @user.destroy
+            render json: {message: "User deleted successfully"}
+        end
     end
 
     private
