@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-    skip_authorization_check
+    load_and_authorize_resource
+    skip_authorization_check :only => :index
     skip_before_action :authenticate_user!, only: :index
 
     def current_ability
-        @current_ability ||= UserAbility.new(current_user)
+        @current_ability ||= UserAbility.new(current_user).merge(StudioAbility.new(current_user))
     end
 
     def index
