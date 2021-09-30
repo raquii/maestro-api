@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, only: :index
-
+ 
   devise_for :users,
     path: '',
     path_names: {
@@ -14,6 +13,12 @@ Rails.application.routes.draw do
     }, 
     defaults: { format: :json }
     get '/me', to: 'users#show'
+
+    resources :users, only: [:index, :update, :destroy]
+    resources :studios, except: :destroy
+    resources :events
+    resources :families
+    resources :students, except: :show
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
