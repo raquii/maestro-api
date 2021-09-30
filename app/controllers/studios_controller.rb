@@ -1,4 +1,10 @@
 class StudiosController < ApplicationController
+    load_and_authorize_resource
+    
+    def current_ability
+        @current_ability ||= StudioAbility.new(current_user)
+    end
+
     def show
         studio = find_studio
         render json: studio
