@@ -17,6 +17,9 @@ class User < ApplicationRecord
   has_many :events, foreign_key: :teacher_id, dependent: :destroy
   has_many :events_as_student, foreign_key: :student_id, class_name: :Event
 
+  validates_format_of :first_name, with: /\A([A-ZÀ-ÿa-z][-,À-ÿa-z. ']+[ ]*)+\z/i, message: "can only include letter characters"
+  validates_format_of :last_name, with: /\A([A-ZÀ-ÿa-z][-,À-ÿa-z. ']+[ ]*)+\z/i, message: "can only include letter characters"
+
   def get_family_events
     events=self.children.map do |c|
       c.events_as_student
