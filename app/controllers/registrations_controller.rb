@@ -10,11 +10,15 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     def register_success
-        render json: { message: 'Signed up sucessfully.' }
+        if(current_user.teacher?)
+            Studio.create!(name: "#{current_user.first_name} #{current_user.last_name}'s Studio", teacher: current_user)
+        end
+
+        render json: UserSerializer.new(current_user), status: :ok
     end
 
     def register_failed
-        render json: { message: resource.errors }
+        render json: { errors: resource.errors.full_messages}, status: :bad_request
     end
 
     
