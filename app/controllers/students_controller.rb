@@ -1,19 +1,18 @@
 class StudentsController < ApplicationController
 
     def current_ability
-        @current_ability ||= UserAbility.new(current_account).merge(StudentProfileAbility.new(current_user))
+        @current_ability ||= UserAbility.new(current_user).merge(StudentProfileAbility.new(current_user))
     end
     
     def index
+
         if current_user.teacher?
             @students = current_user.students
         elsif current_user.guardian?
             @students = current_user.children
         end
-
-        if can? :index, @students
-            render json: StudentSerializer.new(@students)
-        end
+      
+        render json: StudentSerializer.new(@students)
     end
 
     def create
