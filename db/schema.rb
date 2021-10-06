@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_29_204306) do
+ActiveRecord::Schema.define(version: 2021_10_06_024742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 2021_09_29_204306) do
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "default_lesson_price"
     t.integer "default_lesson_duration"
+    t.string "gender"
+    t.date "birthday"
     t.index ["user_id"], name: "index_student_profiles_on_user_id"
   end
 
