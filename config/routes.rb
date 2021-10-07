@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  
   devise_for :users,
     path: '',
     path_names: {
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
     resources :events
     resources :families
     resources :students, except: :show
+    resources :preferences
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
