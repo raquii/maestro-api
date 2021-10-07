@@ -6,7 +6,10 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :phone
       t.string :address
       t.integer :role, default: 0
-
+      t.references :studio, null: true, foreign_key: true
+      t.boolean :lesson_reminder_emails
+      t.boolean :lesson_reminder_sms
+      
       t.timestamps
     end
   end

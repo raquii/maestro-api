@@ -1,6 +1,5 @@
 class StudentProfile < ApplicationRecord
-    belongs_to :user
+    belongs_to :student, class_name: :User
 
-    has_many :events_as_student, class_name: :Event, foreign_key: :student_id, dependent: :nullify
     enum status: [:active, :lead, :waiting, :trial, :inactive]
 end

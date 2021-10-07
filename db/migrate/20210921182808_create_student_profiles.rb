@@ -5,8 +5,9 @@ class CreateStudentProfiles < ActiveRecord::Migration[6.1]
       t.boolean :adult
       t.integer :make_up_credits
       t.integer :status
-      t.references :user, null: false, foreign_key: true
-      t.timestamps
+      t.string :school
+      
+      t.references :student, null: false
     end
   end
 end

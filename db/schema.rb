@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_06_024742) do
+ActiveRecord::Schema.define(version: 2021_10_06_202952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,10 +39,7 @@ ActiveRecord::Schema.define(version: 2021_10_06_024742) do
   end
 
   create_table "families", force: :cascade do |t|
-    t.string "name"
     t.bigint "studio_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.index ["studio_id"], name: "index_families_on_studio_id"
   end
 
@@ -52,26 +49,48 @@ ActiveRecord::Schema.define(version: 2021_10_06_024742) do
     t.index ["jti"], name: "index_jwt_blacklists_on_jti"
   end
 
+  create_table "preferences", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "cancellation_deadline", default: 24
+    t.boolean "permit_cancellations", default: true
+    t.boolean "permit_event_registration", default: true
+    t.integer "event_registration_deadline", default: 24
+    t.boolean "permit_make_up_credits", default: true
+    t.boolean "issue_make_up_credit_before_deadline", default: true
+    t.boolean "expire_make_up_credits", default: false
+    t.integer "max_credit_age"
+    t.boolean "limit_total_make_up_credits", default: true
+    t.integer "max_total_make_up_credits", default: 4
+    t.text "cancellation_policy_summary"
+    t.boolean "default_event_visibility", default: true
+    t.integer "default_lesson_price"
+    t.integer "default_lesson_duration"
+    t.integer "initial_view", default: 0
+    t.string "slot_min_time", default: "08:00"
+    t.string "slot_max_time", default: "21:00"
+    t.boolean "weekends", default: true
+    t.string "location"
+    t.boolean "students_can_edit_profile", default: true
+    t.index ["user_id"], name: "index_preferences_on_user_id"
+  end
+
   create_table "student_profiles", force: :cascade do |t|
     t.string "grade"
     t.boolean "adult"
     t.integer "make_up_credits"
     t.integer "status"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "school"
+    t.bigint "student_id", null: false
     t.decimal "default_lesson_price"
     t.integer "default_lesson_duration"
     t.string "gender"
     t.date "birthday"
-    t.index ["user_id"], name: "index_student_profiles_on_user_id"
+    t.index ["student_id"], name: "index_student_profiles_on_student_id"
   end
 
   create_table "studios", force: :cascade do |t|
     t.string "name"
     t.bigint "teacher_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.index ["teacher_id"], name: "index_studios_on_teacher_id"
   end
 
@@ -81,6 +100,9 @@ ActiveRecord::Schema.define(version: 2021_10_06_024742) do
     t.string "phone"
     t.string "address"
     t.integer "role", default: 0
+    t.bigint "studio_id"
+    t.boolean "lesson_reminder_emails"
+    t.boolean "lesson_reminder_sms"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email", default: "", null: false
@@ -95,9 +117,11 @@ ActiveRecord::Schema.define(version: 2021_10_06_024742) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["family_id"], name: "index_users_on_family_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["studio_id"], name: "index_users_on_studio_id"
   end
 
   add_foreign_key "families", "studios"
-  add_foreign_key "student_profiles", "users"
+  add_foreign_key "preferences", "users"
   add_foreign_key "users", "families"
+  add_foreign_key "users", "studios"
 end

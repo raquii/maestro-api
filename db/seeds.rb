@@ -14,7 +14,6 @@ u1=User.create(
     password: 'Password1!',
     role: 0)
 
-    Studio.create(name:"#{u1.last_name} #{Faker::Music.instrument} Studio", teacher_id: u1.id)
 
 u2=User.create(
     first_name: Faker::Name.first_name,
@@ -25,7 +24,6 @@ u2=User.create(
     password: 'Password1!',
     role: 0)
 
-    Studio.create(name:"#{u2.last_name} #{Faker::Music.instrument} Studio", teacher_id: u2.id)
 
 #creating families
 f1=Family.create(studio:Studio.first)
@@ -50,13 +48,13 @@ s1=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role: 1,
-    family: f1)
-    StudentProfile.create(
+    family: f1,
+    studio:Studio.first)
+    s1.create_student_profile(
     grade: 10,
     adult: false,
     make_up_credits: 1,
     status: 0,
-    user_id: s1.id,
     default_lesson_duration: 30,
     default_lesson_price: 30,
     gender: 'female',
@@ -69,13 +67,13 @@ s2=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role: 1,
-    family: f2)
-    StudentProfile.create(
+    family: f2,
+    studio:Studio.first)
+    s2.create_student_profile(
         grade: 11,
         adult: false,
         make_up_credits: 1,
         status: 0,
-        user_id: s2.id,
         default_lesson_duration: 30,
         default_lesson_price: 30,
         gender: 'female',
@@ -88,13 +86,13 @@ s3=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role: 1,
-    family: f3)
-    StudentProfile.create(
+    family: f3,
+    studio:Studio.first)
+    s3.create_student_profile(
         grade: 10,
         adult: false,
         make_up_credits: 1,
-        status: 0,
-        user_id: s3.id,
+        status: 3,
         default_lesson_duration: 30,
         default_lesson_price: 30,
         gender: 'female',
@@ -107,13 +105,13 @@ s4=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role:1,
-    family: f4)   
-    StudentProfile.create(
+    family: f4,
+    studio:Studio.first)   
+    s4.create_student_profile(
         grade: 10,
         adult: false,
         make_up_credits: 1,
-        status: 0,
-        user_id: s4.id,
+        status: 4,
         default_lesson_duration: 30,
         default_lesson_price: 30,
         gender: 'female',
@@ -126,13 +124,13 @@ s5=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role:1,
-    family: f5)
-    StudentProfile.create(
+    family: f5,
+    studio:Studio.first)
+    s5.create_student_profile(
         grade: 10,
         adult: false,
         make_up_credits: 1,
         status: 0,
-        user_id: s5.id,
         default_lesson_duration: 30,
         default_lesson_price: 30,
         gender: 'female',
@@ -145,13 +143,13 @@ s6=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role: 1,
-    family: f6)
-    StudentProfile.create(
+    family: f6,
+    studio:Studio.first)
+    s6.create_student_profile(
         grade: 10,
         adult: false,
         make_up_credits: 1,
-        status: 0,
-        user_id: s6.id,
+        status: 1,
         default_lesson_duration: 30,
         default_lesson_price: 30,
         gender: 'female',
@@ -164,13 +162,13 @@ s7=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role: 1,
-    family: f7)
-    StudentProfile.create(
+    family: f7,
+    studio:Studio.last)
+    s7.create_student_profile(
         grade: 10,
         adult: false,
         make_up_credits: 1,
         status: 0,
-        user_id: s7.id,
         default_lesson_duration: 30,
         default_lesson_price: 30,
         gender: 'female',
@@ -183,13 +181,13 @@ s8=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role: 1,
-    family: f8)
-    StudentProfile.create(
+    family: f8,
+    studio:Studio.last)
+    s8.create_student_profile(
         grade: 10,
         adult: false,
         make_up_credits: 1,
         status: 0,
-        user_id: s8.id,
         default_lesson_duration: 30,
         default_lesson_price: 30,
         gender: 'female',
@@ -202,13 +200,13 @@ s9=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role: 1,
-    family: f9)
-    StudentProfile.create(
+    family: f9,
+    studio:Studio.last)
+    s9.create_student_profile(
         grade: 10,
         adult: false,
         make_up_credits: 1,
         status: 0,
-        user_id: s9.id,
         default_lesson_duration: 30,
         default_lesson_price: 30,
         gender: 'female',
@@ -221,13 +219,13 @@ s10=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role: 1,
-    family: f10)
-    StudentProfile.create(
+    family: f10,
+    studio:Studio.last)
+    s10.create_student_profile(
         grade: 10,
         adult: false,
         make_up_credits: 1,
         status: 0,
-        user_id: s10.id,
         default_lesson_duration: 30,
         default_lesson_price: 30,
         gender: 'female',
@@ -240,13 +238,13 @@ s11=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role:1,
-    family: f11)
-    StudentProfile.create(
+    family: f11,
+    studio:Studio.last)
+    s11.create_student_profile(
         grade: 10,
         adult: false,
         make_up_credits: 1,
         status: 0,
-        user_id: s11.id,
         default_lesson_duration: 30,
         default_lesson_price: 30,
         gender: 'female',
@@ -259,13 +257,13 @@ s12=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role:1,
-    family: f11)
-    StudentProfile.create(
+    family: f11,
+    studio:Studio.last)
+    s12.create_student_profile(
         grade: 10,
         adult: false,
         make_up_credits: 1,
         status: 0,
-        user_id: s12.id,
         default_lesson_duration: 30,
         default_lesson_price: 30,
         gender: 'female',
@@ -278,13 +276,13 @@ s13=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role:1,
-    family: f1)
-    StudentProfile.create(
+    family: f1,
+    studio:Studio.first)
+    s13.create_student_profile(
         grade: 10,
         adult: false,
         make_up_credits: 1,
         status: 0,
-        user_id: s13.id,
         default_lesson_duration: 30,
         default_lesson_price: 30,
         gender: 'female',
@@ -300,7 +298,8 @@ p1=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role: 2,
-    family: f1 )
+    family: f1,
+    studio:Studio.first )
 p2=User.create(
     first_name: Faker::Name.first_name,
     last_name:Faker::Name.last_name, 
@@ -309,7 +308,8 @@ p2=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role: 2,
-    family: f1)
+    family: f1,
+    studio:Studio.first)
 p3=User.create(
     first_name: Faker::Name.first_name,
     last_name:Faker::Name.last_name, 
@@ -318,7 +318,8 @@ p3=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role: 2,
-    family: f11)
+    family: f11,
+    studio:Studio.last)
 p4=User.create(
     first_name: Faker::Name.first_name,
     last_name:Faker::Name.last_name, 
@@ -327,7 +328,8 @@ p4=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role:2,
-    family: f11)   
+    family: f11,
+    studio:Studio.last)   
 p5=User.create(
     first_name: Faker::Name.first_name,
     last_name:Faker::Name.last_name, 
@@ -336,7 +338,8 @@ p5=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role:2,
-    family: f2)
+    family: f2,
+    studio:Studio.first)
 p6=User.create(
     first_name: Faker::Name.first_name,
     last_name:Faker::Name.last_name, 
@@ -345,7 +348,8 @@ p6=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role: 2,
-    family: f8)
+    family: f8,
+    studio:Studio.last)
 p7=User.create(
     first_name: Faker::Name.first_name,
     last_name:Faker::Name.last_name, 
@@ -354,7 +358,8 @@ p7=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role: 2,
-    family: f9)
+    family: f9,
+    studio:Studio.last)
 p8=User.create(
     first_name: Faker::Name.first_name,
     last_name:Faker::Name.last_name, 
@@ -363,7 +368,8 @@ p8=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role: 2,
-    family: f9)
+    family: f9,
+    studio:Studio.last)
 p9=User.create(
     first_name: Faker::Name.first_name,
     last_name:Faker::Name.last_name, 
@@ -372,7 +378,8 @@ p9=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role: 2,
-    family: f4)
+    family: f4,
+    studio:Studio.first)
 p10=User.create(
     first_name: Faker::Name.first_name,
     last_name:Faker::Name.last_name, 
@@ -381,4 +388,5 @@ p10=User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10),
     role: 2,
-    family: f5)
+    family: f5,
+    studio:Studio.first)

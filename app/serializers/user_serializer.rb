@@ -8,10 +8,10 @@ class UserSerializer
   attribute :studio, if: Proc.new { |record|
     record.teacher?
   } do |object|
-    StudioSerializer.new(object.studio)
+    StudioSerializer.new(object.studio_as_teacher)
   end
 
   attribute :teacher, if: Proc.new{|record| record.family } do |object|
-    TeacherSerializer.new(object.family.teacher)
+    TeacherSerializer.new(object.studio.teacher)
   end
 end
