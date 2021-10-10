@@ -4,11 +4,11 @@ class StudioAbility
         
         return unless user.present?
         if user.student? || user.guardian?
-            can :read, Studio, teacher_id: user.family.teacher.id
+            can :read, Studio, teacher: user.teacher
         end
 
         return unless user.teacher?
-        can :manage, Studio, teacher_id: user.id
+        can :manage, Studio, teacher: user
 
         return unless user.admin?
         can :manage, Studio

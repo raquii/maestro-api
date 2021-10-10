@@ -3,13 +3,11 @@ class StudentProfileAbility
     def initialize(user)
         
         return unless user.present?
-        can :read, StudentProfile, user: user
-
-        return unless user.guardian?
-        can :read, StudentProfile, user: {family: user.family}
+        can :read, StudentProfile, student: user
+        can :read, StudentProfile, student: {family_id: user.family_id}
 
         return unless user.teacher?
-        can :manage, StudentProfile, user:{family:{teacher: user}}
+        can :manage, StudentProfile, student:{studio:{teacher_id: user.id}}
 
         return unless user.admin?
         can :manage, StudentProfile

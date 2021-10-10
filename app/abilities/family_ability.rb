@@ -8,7 +8,7 @@ class FamilyAbility
         end
 
         return unless user.teacher?
-        can :manage, Family, studio: user.studio
+        can :manage, Family, studio: user.studio_as_teacher
 
         return unless user.admin?
         can :manage, Family
