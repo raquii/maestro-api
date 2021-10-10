@@ -12,7 +12,7 @@ class User < ApplicationRecord
 #student/guardian relationships
   belongs_to :family, optional: true
   belongs_to :studio, optional: true
-  has_one :student_profile, foreign_key: :student_id,dependent: :destroy
+  has_one :student_profile, foreign_key: :student_id, dependent: :destroy
   has_one :teacher, through: :studio, class_name: :User
   has_many :events_as_student, foreign_key: :student_id, class_name: :Event
 
@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :children, through: :family, class_name: :User
 
 #teacher relationships
-  has_one :studio_as_teacher, class_name: :Studio, foreign_key: :teacher_id, dependent: :destroy
+  has_one :studio_as_teacher, class_name: :Studio, foreign_key: :teacher_id, inverse_of: :teacher, dependent: :destroy
   has_one :preference
   has_many :students, through: :studio_as_teacher, class_name: :User
   has_many :guardians, through: :studio_as_teacher, class_name: :User
