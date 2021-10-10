@@ -11,7 +11,14 @@ class UserSerializer
     StudioSerializer.new(object.studio_as_teacher)
   end
 
-  attribute :teacher, if: Proc.new{|record| record.family } do |object|
-    TeacherSerializer.new(object.studio.teacher)
+  attribute :preferences, if: Proc.new { |record|
+    record.teacher?
+  } do |object|
+    PreferenceSerializer.new(object.preference)
   end
+
+  attribute :teacher, if: Proc.new{|record| record.family } do |object|
+    TeacherSerializer.new(object.teacher)
+  end
+
 end
