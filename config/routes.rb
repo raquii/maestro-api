@@ -19,7 +19,13 @@ Rails.application.routes.draw do
     resources :studios, except: :destroy
     resources :events
     resources :families
-    resources :students, except: :show
+    resources :students do
+      collection do
+        put :bulk_update
+        delete :bulk_destroy
+      end
+    end
+
     resources :preferences
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
