@@ -51,6 +51,11 @@ class StudentsController < ApplicationController
     end
 
     def bulk_destroy
+        students = find_student
+        if students.all?{|s| can? :destroy, s}
+            students.destroy_all
+            render json: {message: "Successfuly deleted."}
+        end
     end
     
     private 
