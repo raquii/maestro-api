@@ -16,7 +16,20 @@ class StudentsController < ApplicationController
     end
 
     def create
+        byebug
         @student = User.new(student_params)
+
+        @student.studio = current_user.studio_as_teacher
+
+        if params[:new_family]
+            @family = Family.new()
+            @student.family = @family
+        else
+            @family = Family.find(params[:family_id])
+            student.family = @family
+        end
+
+        @student.build_student_profile(student_params)
 
         if can? :create, @student
             @student.save!

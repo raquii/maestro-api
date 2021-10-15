@@ -21,4 +21,16 @@ class UserSerializer
     TeacherSerializer.new(object.teacher)
   end
 
+  attribute :students, if: Proc.new { |record|
+    record.teacher?
+  } do |object|
+    StudentSerializer.new(object.students)
+  end
+
+  attribute :events, if: Proc.new { |record|
+    record.teacher?
+  } do |object|
+    EventSerializer.new(object.events)
+  end
+
 end
