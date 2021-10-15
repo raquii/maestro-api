@@ -49,6 +49,6 @@ class EventsController < ApplicationController
     end
 
     def event_params
-        params.permit(:teacher_id, :student_id, :all_day, :start, :end, :start_time, :end_time, :start_recur, :end_recur, :title, :allow_registration, :type, :attendance, :visible, :location, :price)
+        params.permit(:teacher_id, :student_id, :all_day, :start, :end, :start_time, :end_time, :start_recur, :end_recur, :title, :allow_registration, :event_type, :attendance, :visible, :location, :price, :make_up_credit_required, :default_lesson, :days_of_week)
     end
 end
