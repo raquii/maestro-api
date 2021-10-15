@@ -14,7 +14,7 @@ class User < ApplicationRecord
   belongs_to :studio, optional: true
   has_one :student_profile, foreign_key: :student_id, dependent: :destroy
   has_one :teacher, through: :studio, class_name: :User
-  has_many :events_as_student, foreign_key: :student_id, class_name: :Event
+  has_many :events_as_student, foreign_key: :student_id, class_name: :Event, dependent: :destroy
 
 #guardian relationship
   has_many :children, through: :family, class_name: :User
