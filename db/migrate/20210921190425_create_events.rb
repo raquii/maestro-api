@@ -6,13 +6,13 @@ class CreateEvents < ActiveRecord::Migration[6.1]
       t.boolean :all_day
       t.datetime :start
       t.datetime :end
-      t.time :start_time
-      t.time :end_time
+      t.string :start_time
+      t.string :end_time
       t.date :start_recur
       t.date :end_recur
       t.string :title
       t.boolean :allow_registration
-      t.integer :type
+      t.integer :event_type
       t.integer :attendance
       t.boolean :visible
       t.string :location
