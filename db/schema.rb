@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_06_202952) do
+ActiveRecord::Schema.define(version: 2021_10_15_042348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,19 +21,22 @@ ActiveRecord::Schema.define(version: 2021_10_06_202952) do
     t.boolean "all_day"
     t.datetime "start"
     t.datetime "end"
-    t.time "start_time"
-    t.time "end_time"
+    t.string "start_time"
+    t.string "end_time"
     t.date "start_recur"
     t.date "end_recur"
     t.string "title"
     t.boolean "allow_registration"
-    t.integer "type"
+    t.integer "event_type"
     t.integer "attendance"
     t.boolean "visible"
     t.string "location"
     t.decimal "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "make_up_credit_required", default: false
+    t.boolean "default_lesson", default: false
+    t.integer "days_of_week"
     t.index ["student_id"], name: "index_events_on_student_id"
     t.index ["teacher_id"], name: "index_events_on_teacher_id"
   end
@@ -58,19 +61,25 @@ ActiveRecord::Schema.define(version: 2021_10_06_202952) do
     t.boolean "permit_make_up_credits", default: true
     t.boolean "issue_make_up_credit_before_deadline", default: true
     t.boolean "expire_make_up_credits", default: false
-    t.integer "max_credit_age"
+    t.integer "max_credit_age", default: 0
     t.boolean "limit_total_make_up_credits", default: true
     t.integer "max_total_make_up_credits", default: 4
-    t.text "cancellation_policy_summary"
+    t.text "cancellation_policy_summary", default: ""
     t.boolean "default_event_visibility", default: true
-    t.integer "default_lesson_price"
-    t.integer "default_lesson_duration"
+    t.integer "default_lesson_price", default: 0
+    t.integer "default_lesson_duration", default: 0
     t.integer "initial_view", default: 0
     t.string "slot_min_time", default: "08:00"
     t.string "slot_max_time", default: "21:00"
     t.boolean "weekends", default: true
-    t.string "location"
+    t.string "location", default: ""
     t.boolean "students_can_edit_profile", default: true
+    t.string "lesson_color", default: "#b5b5da"
+    t.string "group_lesson_color", default: "#33cfbc"
+    t.string "recital_color", default: "#f9ac1f"
+    t.string "make_up_lesson_color", default: "#ee7d68"
+    t.string "vacation_color", default: "#b0d9f4"
+    t.string "birthday_color", default: "#9de01f"
     t.index ["user_id"], name: "index_preferences_on_user_id"
   end
 

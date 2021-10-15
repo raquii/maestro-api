@@ -10,7 +10,7 @@ u1=User.create(
     last_name:Faker::Name.last_name, 
     phone: Faker::PhoneNumber.cell_phone,
     address: Faker::Address.street_address,
-    email: Faker::Internet.email,
+    email: "teacher1@example.com",
     password: 'Password1!',
     role: 0)
 
@@ -20,7 +20,7 @@ u2=User.create(
     last_name:Faker::Name.last_name, 
     phone: Faker::PhoneNumber.cell_phone,
     address: Faker::Address.street_address,
-    email: Faker::Internet.email,
+    email: "teacher2@example.com",
     password: 'Password1!',
     role: 0)
 
