@@ -17,7 +17,7 @@ class FamiliesController < ApplicationController
     end
 
     def create
-        @family = Family.new(studio_params)
+        @family = Family.new()
         
         if can? :create, @family
             @family.save!
@@ -48,7 +48,4 @@ class FamiliesController < ApplicationController
         Family.find(params[:id])
     end
 
-    def family_params
-        params.permit(:name)
-    end
 end
