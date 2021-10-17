@@ -17,21 +17,37 @@ class StudentsController < ApplicationController
 
     def create
         byebug
-        @student = User.new(student_params)
-
+        @student = User.new(params[:student])
+        byebug
         @student.studio = current_user.studio_as_teacher
-
-        if params[:new_family]
+        @student.build_student_profile(params[:student_profile])
+        byebug
+        if params[:student][:family_id].blank?
+            byebug
             @family = Family.new()
             @student.family = @family
         else
+            byebug
             @family = Family.find(params[:family_id])
-            student.family = @family
+            @student.family = @family
+        end
+        byebug
+        unless params[:guardian_1].blank?
+            byebug
+            @guardian_1 = User.new(params[:guardian_1])
+            @guardian.studio = @student.studio
+            @guardian.family = @student.family
+        end
+        byebug
+        unless params[:guardian_2].blank?
+            byebug
+            @guardian_2 = User.new(params[:guardian_2])
+            @guardian.studio = @student.studio
+            @guardian.family = @student.family
         end
 
-        @student.build_student_profile(student_params)
-
         if can? :create, @student
+            byebug
             @student.save!
             render json: StudentSerializer.new(@student), status: :created
         end
