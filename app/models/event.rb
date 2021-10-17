@@ -12,7 +12,7 @@ class Event < ApplicationRecord
             if self.student_id.nil?
                 self.title = "#{self.event_type}"
             else
-                self.title = "#{self.student.first_name} #{self.student.last_name} - #{self.event_type.capitalize()}"
+                self.title = "#{self.student.first_name} #{self.student.last_name} - #{self.event_type.titleize}"
             end
         end
     end
