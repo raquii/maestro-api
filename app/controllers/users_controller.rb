@@ -11,8 +11,11 @@ class UsersController < ApplicationController
     end
 
     def show
-        user = current_user
-        render json: UserSerializer.new(user)
+        if current_user.teacher?
+            render json: TeacherSerializer.new(current_user), status: :ok
+        else
+            render json: UserSerializer.new(current_user), status: :ok
+        end
     end
 
     def update

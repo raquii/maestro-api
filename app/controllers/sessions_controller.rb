@@ -4,7 +4,11 @@ class SessionsController < Devise::SessionsController
     private
     
     def respond_with(resource, _opts = {})
-      render json: UserSerializer.new(current_user), status: :ok
+      if current_user.teacher?
+        render json: TeacherSerializer.new(current_user), status: :ok
+      else
+        render json: UserSerializer.new(current_user), status: :ok
+      end
     end
   
     def respond_to_on_destroy

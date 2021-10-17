@@ -10,8 +10,11 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     def register_success
- 
-        render json: UserSerializer.new(current_user), status: :ok
+        if current_user.teacher?
+            render json: TeacherSerializer.new(current_user), status: :ok
+        else
+            render json: UserSerializer.new(current_user), status: :ok
+        end
     end
 
     def register_failed
