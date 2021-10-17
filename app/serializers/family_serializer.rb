@@ -5,4 +5,9 @@ class FamilySerializer
   attribute :members do |object|
     object.get_members
   end
+
+  attribute :names do |object|
+    object.get_names
+  end
+  
 end

@@ -7,4 +7,8 @@ class StudentSerializer
         StudentProfileSerializer.new(object.student_profile)
     end
 
+    attribute :guardians, if: Proc.new{|record| record.parents.present? } do |object|
+        GuardianSerializer.new(object.parents)
+    end
+
 end
