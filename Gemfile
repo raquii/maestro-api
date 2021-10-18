@@ -49,9 +49,7 @@ gem 'chronic', '~> 0.10.2'
 
 gem 'devise'
 gem 'devise-jwt'
-
-
-
+gem 'devise_invitable', '~> 2.0.0'
 
 gem "cancancan", "~> 3.3"
 
