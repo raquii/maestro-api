@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     def current_ability
-        @current_ability ||= UserAbility.new(current_user).merge(StudioAbility.new(current_user))
+        @current_ability ||= UserAbility.new(current_user)
     end
 
     def index
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
     def show
         if current_user.teacher?
-            render json: TeacherSerializer.new(current_user), status: :ok
+            render json: TeacherProfileSerializer.new(current_user.teacher_profile), status: :ok
         else
             render json: UserSerializer.new(current_user), status: :ok
         end

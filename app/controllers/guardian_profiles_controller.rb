@@ -1,0 +1,2 @@
+class GuardianProfilesController < ApplicationController
+end

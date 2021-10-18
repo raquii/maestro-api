@@ -1,7 +1,7 @@
 class CreatePreferences < ActiveRecord::Migration[6.1]
   def change
     create_table :preferences do |t|
-      t.references :user, foreign_key: true, null: false
+      t.references :teacher_profile, foreign_key: true, null: false
       t.integer :cancellation_deadline, default: 24
       t.boolean :permit_cancellations, default: true
       t.boolean :permit_event_registration, default: true

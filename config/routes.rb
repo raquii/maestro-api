@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
- 
-  
+
   devise_for :users,
     path: '',
     path_names: {
@@ -25,6 +24,10 @@ Rails.application.routes.draw do
         delete :bulk_destroy
       end
     end
+
+    resources :recurring_groups
+  resources :guardian_profiles
+  resources :teacher_profiles
 
     resources :preferences, only: :update
   

@@ -1,22 +1,23 @@
 class Family < ApplicationRecord
-    belongs_to :studio
-    has_many :children, -> { where(role: 1) }, class_name: :User
-    has_many :parents, -> { where(role: 2) }, class_name: :User
-    has_one :teacher, through: :studio, class_name: :User
-    
-    has_many :events_as_student, through: :children
+    belongs_to :studio, inverse_of: :families
+    has_many :students, class_name: 'StudentProfile', inverse_of: :family, dependent: :destroy
+    has_many :guardians, class_name: 'GuardianProfile', inverse_of: :family, dependent: :destroy
+    has_one :teacher, through: :studio, source: :teacher_profile
+
+    has_many :events, through: :students
+
 
     def get_members
         @members = []
-        self.children.each{|c| @members << {id: c.id, role: c.role, name: "#{c.first_name} #{c.last_name}"}}
-        self.parents.each{|p| @members << {id: p.id, role: p.role, name: "#{p.first_name} #{p.last_name}"}}
+        self.students.each{|s| @members << {id: s.id, role: s.role, name: "#{s.first_name} #{s.last_name}"}}
+        self.guardians.each{|g| @members << {id: g.id, role: g.role, name: "#{g.first_name} #{g.last_name}"}}
         @members
     end
 
     def get_names
         @names = ""
-        self.children.each{|c| @names.concat("#{c.first_name} #{c.last_name}; ")}
-        self.parents.each{|p| @names.concat("#{p.first_name} #{p.last_name}; ")}
+        self.students.each{|s| @names.concat("#{s.first_name} #{s.last_name}; ")}
+        self.guardians.each{|g| @names.concat("#{g.first_name} #{g.last_name}; ")}
         @names.strip!
     end
 end

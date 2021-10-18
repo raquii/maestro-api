@@ -1,0 +1,2 @@
+class RecurringGroupsController < ApplicationController
+end

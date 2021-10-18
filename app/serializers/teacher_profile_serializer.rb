@@ -1,12 +1,11 @@
-class TeacherSerializer
+class TeacherProfileSerializer
   include JSONAPI::Serializer
   set_key_transform :camel_lower
-  set_type :user
 
-  attributes :first_name, :last_name, :phone, :address, :email, :role
+  attributes :first_name, :last_name, :phone, :address, :email
 
   attribute :studio do |object|
-    StudioSerializer.new(object.studio_as_teacher)
+    StudioSerializer.new(object.studio)
   end
 
   attribute :preferences do |object|
@@ -14,7 +13,7 @@ class TeacherSerializer
   end
 
   attribute :students do |object|
-    StudentSerializer.new(object.students)
+    StudentProfileSerializer.new(object.students)
   end
 
   attribute :events do |object|
@@ -23,5 +22,9 @@ class TeacherSerializer
 
   attribute :families do |object|
     FamilySerializer.new(object.families)
+  end
+
+  attribute :role do |object|
+    object.user.role
   end
 end

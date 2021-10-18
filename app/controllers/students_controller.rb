@@ -16,34 +16,32 @@ class StudentsController < ApplicationController
     end
 
     def create
-        byebug
-        @student = User.new(params[:student])
-        byebug
+ 
+        @student = User.new(user_params(:student))
+
         @student.studio = current_user.studio_as_teacher
-        @student.build_student_profile(params[:student_profile])
-        byebug
+        @student.build_student_profile(profile_params)
+
         if params[:student][:family_id].blank?
-            byebug
             @family = Family.new()
             @student.family = @family
         else
-            byebug
             @family = Family.find(params[:family_id])
             @student.family = @family
         end
-        byebug
-        unless params[:guardian_1].blank?
+
+        unless params[:guardian1][:first_name].blank?
             byebug
-            @guardian_1 = User.new(params[:guardian_1])
-            @guardian.studio = @student.studio
-            @guardian.family = @student.family
+            @guardian1 = User.new(user_params(:guardian1))
+            @guardian1.studio = @student.studio
+            @guardian1.family = @student.family
         end
-        byebug
-        unless params[:guardian_2].blank?
+     
+        unless params[:guardian2][:first_name].blank?
             byebug
-            @guardian_2 = User.new(params[:guardian_2])
-            @guardian.studio = @student.studio
-            @guardian.family = @student.family
+            @guardian2 = User.new(user_params(:guardian2))
+            @guardian2.studio = @student.studio
+            @guardian2.family = @student.family
         end
 
         if can? :create, @student
@@ -89,12 +87,16 @@ class StudentsController < ApplicationController
     
     private 
 
+    def user_params(symbol)
+        params.require(symbol).permit(:id, :first_name, :last_name, :email, :phone, :address, :family_id, :role, :lesson_reminder_emails, :lesson_reminder_sms)
+    end
+
     def student_params
-        params.permit(:id, :first_name, :last_name, :email, :phone, :address, :family_id, :role, student_profile:[:grade, :make_up_credits, :status, :adult, :student, :default_lesson_duration, :default_lesson_price, :birthday, :gender])
+        params.require(:student).permit(:first_name, :last_name, :email, :phone, :address, :family_id, :role, :lesson_reminder_emails, :lesson_reminder_sms)
     end
 
     def profile_params
-        params.require(:student_profile).permit(:grade, :make_up_credits, :status, :adult, :student, :default_lesson_duration, :default_lesson_price, :birthday, :gender)
+        params.require(:student_profile).permit(:grade, :make_up_credits, :status, :adult, :student, :student_id, :default_lesson_duration, :default_lesson_price, :birthday, :gender, :school)
     end
 
     def find_student
