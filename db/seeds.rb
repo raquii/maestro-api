@@ -322,7 +322,7 @@ sa=StudentProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: fa,
-    studio:Studio.first,
+    studio:Studio.last,
     grade: "10",
     adult: false,
     make_up_credits: 1,
@@ -341,7 +341,7 @@ sb=StudentProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: fb,
-    studio:Studio.first,
+    studio:Studio.last,
     grade: "11",
     adult: false,
     make_up_credits: 1,
@@ -360,7 +360,7 @@ sc=StudentProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: fc,
-    studio:Studio.first,
+    studio:Studio.last,
     grade: "11",
     adult: false,
     make_up_credits: 1,
@@ -378,7 +378,7 @@ sd=StudentProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: fd,
-    studio:Studio.first,
+    studio:Studio.last,
     grade: "11",
     adult: false,
     make_up_credits: 1,
@@ -396,7 +396,7 @@ se=StudentProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: fe,
-    studio:Studio.first,
+    studio:Studio.last,
     grade: "11",
     adult: false,
     make_up_credits: 1,
@@ -414,7 +414,7 @@ sf=StudentProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: ff,
-    studio:Studio.first,
+    studio:Studio.last,
     grade: "11",
     adult: false,
     make_up_credits: 1,
@@ -432,7 +432,7 @@ sg=StudentProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: fa,
-    studio:Studio.first,
+    studio:Studio.last,
     grade: "11",
     adult: false,
     make_up_credits: 1,
@@ -450,7 +450,7 @@ sh=StudentProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: fb,
-    studio:Studio.first,
+    studio:Studio.last,
     grade: "11",
     adult: false,
     make_up_credits: 1,
@@ -468,7 +468,7 @@ si=StudentProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: fc,
-    studio:Studio.first,
+    studio:Studio.last,
     grade: "11",
     adult: false,
     make_up_credits: 1,
@@ -489,7 +489,7 @@ g1=GuardianProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: fa,
-    studio:Studio.first )
+    studio:Studio.last )
 g2=GuardianProfile.create(
     first_name: Faker::Name.first_name,
     last_name:sb.last_name, 
@@ -497,7 +497,7 @@ g2=GuardianProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: fb,
-    studio:Studio.first )
+    studio:Studio.last )
 g3=GuardianProfile.create(
     first_name: Faker::Name.first_name,
     last_name:sc.last_name, 
@@ -505,7 +505,7 @@ g3=GuardianProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: fc,
-    studio:Studio.first )
+    studio:Studio.last )
 g4=GuardianProfile.create(
     first_name: Faker::Name.first_name,
     last_name:sd.last_name, 
@@ -513,7 +513,7 @@ g4=GuardianProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: fd,
-    studio:Studio.first )
+    studio:Studio.last )
 g5=GuardianProfile.create(
     first_name: Faker::Name.first_name,
     last_name:se.last_name, 
@@ -521,7 +521,7 @@ g5=GuardianProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: fe,
-    studio:Studio.first )
+    studio:Studio.last )
 g6=GuardianProfile.create(
     first_name: Faker::Name.first_name,
     last_name:sf.last_name, 
@@ -529,7 +529,7 @@ g6=GuardianProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: ff,
-    studio:Studio.first )
+    studio:Studio.last )
 g7=GuardianProfile.create(
     first_name: Faker::Name.first_name,
     last_name:sa.last_name, 
@@ -537,7 +537,7 @@ g7=GuardianProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: fa,
-    studio:Studio.first )
+    studio:Studio.last )
 g8=GuardianProfile.create(
     first_name: Faker::Name.first_name,
     last_name:sb.last_name, 
@@ -545,7 +545,7 @@ g8=GuardianProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: fb,
-    studio:Studio.first )
+    studio:Studio.last )
 g9=GuardianProfile.create(
     first_name: Faker::Name.first_name,
     last_name:sc.last_name, 
@@ -553,7 +553,7 @@ g9=GuardianProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: fc,
-    studio:Studio.first )
+    studio:Studio.last )
 g10=GuardianProfile.create(
     first_name: Faker::Name.first_name,
     last_name:se.last_name, 
@@ -561,7 +561,7 @@ g10=GuardianProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: fe,
-    studio:Studio.first )
+    studio:Studio.last )
 g11=GuardianProfile.create(
     first_name: Faker::Name.first_name,
     last_name:Faker::Name.last_name, 
@@ -569,7 +569,7 @@ g11=GuardianProfile.create(
     address: Faker::Address.street_address,
     email: Faker::Internet.email,
     family: ff,
-    studio:Studio.first )
+    studio:Studio.last )
 
     
 
