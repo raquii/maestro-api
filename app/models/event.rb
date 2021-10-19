@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
-    belongs_to :teacher_profile, inverse_of: :event
-    belongs_to :student_profile, inverse_of: :event, optional: :true
+    belongs_to :teacher_profile, inverse_of: :events
+    belongs_to :student_profile, inverse_of: :events, optional: :true
     belongs_to :recurring_group, inverse_of: :event, optional: :true
 
     enum event_type: [:lesson, :group_lesson, :make_up_lesson, :recital, :vacation, :birthday]
