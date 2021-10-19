@@ -25,11 +25,10 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :recurring_groups
+  resources :recurring_groups
   resources :guardian_profiles
   resources :teacher_profiles
-
-    resources :preferences, only: :update
+  resources :preferences, only: :update
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

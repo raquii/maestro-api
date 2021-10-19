@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_18_024743) do
+ActiveRecord::Schema.define(version: 2021_10_18_214644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 2021_10_18_024743) do
     t.bigint "family_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "lesson_reminder_emails"
+    t.boolean "lesson_reminder_sms"
     t.index ["family_id"], name: "index_guardian_profiles_on_family_id"
     t.index ["studio_id"], name: "index_guardian_profiles_on_studio_id"
     t.index ["user_id"], name: "index_guardian_profiles_on_user_id"
@@ -119,6 +121,8 @@ ActiveRecord::Schema.define(version: 2021_10_18_024743) do
     t.integer "default_lesson_duration"
     t.string "gender"
     t.date "birthday"
+    t.boolean "lesson_reminder_emails"
+    t.boolean "lesson_reminder_sms"
     t.index ["family_id"], name: "index_student_profiles_on_family_id"
     t.index ["studio_id"], name: "index_student_profiles_on_studio_id"
     t.index ["user_id"], name: "index_student_profiles_on_user_id"
