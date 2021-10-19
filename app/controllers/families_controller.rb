@@ -1,9 +1,5 @@
 class FamiliesController < ApplicationController
 
-    def current_ability
-        @current_ability ||= FamilyAbility.new(current_user)
-    end
-
     def index
         authorize! :index, Family
         @families = Family.accessible_by(current_ability)

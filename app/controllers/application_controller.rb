@@ -17,7 +17,8 @@ class ApplicationController < ActionController::API
     end
   
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :encrypted_password, :password, :password_confirmation, :first_name, :last_name, :address, :phone, :role, :family_id])
+      devise_parameter_sanitizer.permit(:login, keys: [:email, :encrypted_password, :password_confirmation, :role,])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :encrypted_password, :password_confirmation, :role,])
     end
 
     def render_response_not_found

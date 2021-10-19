@@ -1,13 +1,6 @@
 class StudiosController < ApplicationController
-    
-    def current_ability
-        @current_ability ||= StudioAbility.new(current_user)
-    end
 
     def index
-        authorize! :index, Studio
-        @studios = Studio.accessible_by(current_ability)
-        render json: StudioSerializer.new(@studios)
     end
 
     def show
@@ -36,7 +29,7 @@ class StudiosController < ApplicationController
     private
 
     def studio_params
-        params.permit(:name, :teacher_id)
+        params.permit(:name, :teacher_profile_id)
     end
 
     def find_studio

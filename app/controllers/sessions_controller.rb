@@ -1,13 +1,12 @@
 class SessionsController < Devise::SessionsController
     respond_to :json
-  
+
     private
-    
+  
     def respond_with(resource, _opts = {})
+
       if current_user.teacher?
         render json: TeacherProfileSerializer.new(current_user.teacher_profile), status: :ok
-      else
-        render json: StudentProfileSerializer.new(current_user), status: :ok
       end
     end
   

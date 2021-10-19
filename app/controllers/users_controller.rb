@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
 
-    def current_ability
-        @current_ability ||= UserAbility.new(current_user)
-    end
-
     def index
         authorize! :index, User
         @users = User.accessible_by(current_ability)
@@ -41,6 +37,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.permit(:email, :first_name, :last_name, :phone, :address, :password)
+        params.permit(:email, :password)
     end
 end

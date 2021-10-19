@@ -1,9 +1,5 @@
 class PreferencesController < ApplicationController
 
-    def current_ability
-        @current_ability ||= PreferenceAbility.new(current_user)
-    end
-    
     def update
         preference = find_preference
         authorize! :update, preference
