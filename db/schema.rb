@@ -21,12 +21,12 @@ ActiveRecord::Schema.define(version: 2021_10_18_214644) do
     t.boolean "all_day"
     t.datetime "start"
     t.datetime "end"
-    t.string "title"
+    t.text "title"
     t.boolean "allow_registration"
     t.integer "event_type"
     t.integer "attendance"
     t.boolean "visible"
-    t.string "location"
+    t.text "location"
     t.decimal "price"
     t.bigint "recurring_group_id"
     t.datetime "created_at", precision: 6, null: false
@@ -44,11 +44,11 @@ ActiveRecord::Schema.define(version: 2021_10_18_214644) do
   end
 
   create_table "guardian_profiles", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone"
-    t.string "address"
-    t.string "email"
+    t.text "first_name"
+    t.text "last_name"
+    t.text "phone"
+    t.text "address"
+    t.text "email"
     t.bigint "user_id"
     t.bigint "studio_id", null: false
     t.bigint "family_id", null: false
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_10_18_214644) do
   end
 
   create_table "jwt_blacklists", force: :cascade do |t|
-    t.string "jti", null: false
+    t.text "jti", null: false
     t.datetime "exp"
     t.index ["jti"], name: "index_jwt_blacklists_on_jti"
   end
@@ -84,17 +84,17 @@ ActiveRecord::Schema.define(version: 2021_10_18_214644) do
     t.integer "default_lesson_price", default: 0
     t.integer "default_lesson_duration", default: 0
     t.integer "initial_view", default: 0
-    t.string "slot_min_time", default: "08:00"
-    t.string "slot_max_time", default: "21:00"
+    t.text "slot_min_time", default: "08:00"
+    t.text "slot_max_time", default: "21:00"
     t.boolean "weekends", default: true
-    t.string "location", default: ""
+    t.text "location", default: ""
     t.boolean "students_can_edit_profile", default: true
-    t.string "lesson_color", default: "#b5b5da"
-    t.string "group_lesson_color", default: "#33cfbc"
-    t.string "recital_color", default: "#f9ac1f"
-    t.string "make_up_lesson_color", default: "#ee7d68"
-    t.string "vacation_color", default: "#b0d9f4"
-    t.string "birthday_color", default: "#9de01f"
+    t.text "lesson_color", default: "#b5b5da"
+    t.text "group_lesson_color", default: "#33cfbc"
+    t.text "recital_color", default: "#f9ac1f"
+    t.text "make_up_lesson_color", default: "#ee7d68"
+    t.text "vacation_color", default: "#b0d9f4"
+    t.text "birthday_color", default: "#9de01f"
     t.index ["teacher_profile_id"], name: "index_preferences_on_teacher_profile_id"
   end
 
@@ -103,23 +103,23 @@ ActiveRecord::Schema.define(version: 2021_10_18_214644) do
   end
 
   create_table "student_profiles", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone"
-    t.string "address"
-    t.string "email"
+    t.text "first_name"
+    t.text "last_name"
+    t.text "phone"
+    t.text "address"
+    t.text "email"
     t.bigint "user_id"
     t.bigint "studio_id", null: false
     t.bigint "family_id", null: false
-    t.string "grade"
+    t.text "grade"
     t.boolean "adult"
     t.integer "make_up_credits"
     t.integer "status"
-    t.string "school"
-    t.string "notes"
+    t.text "school"
+    t.text "notes"
     t.decimal "default_lesson_price"
     t.integer "default_lesson_duration"
-    t.string "gender"
+    t.text "gender"
     t.date "birthday"
     t.boolean "lesson_reminder_emails"
     t.boolean "lesson_reminder_sms"
@@ -129,17 +129,17 @@ ActiveRecord::Schema.define(version: 2021_10_18_214644) do
   end
 
   create_table "studios", force: :cascade do |t|
-    t.string "name"
+    t.text "name"
     t.bigint "teacher_profile_id", null: false
     t.index ["teacher_profile_id"], name: "index_studios_on_teacher_profile_id"
   end
 
   create_table "teacher_profiles", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone"
-    t.string "address"
-    t.string "email"
+    t.text "first_name"
+    t.text "last_name"
+    t.text "phone"
+    t.text "address"
+    t.text "email"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -150,20 +150,20 @@ ActiveRecord::Schema.define(version: 2021_10_18_214644) do
     t.integer "role", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
+    t.text "email", default: "", null: false
+    t.text "encrypted_password", default: "", null: false
+    t.text "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string "invitation_token"
+    t.text "invitation_token"
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"
     t.datetime "invitation_accepted_at"
     t.integer "invitation_limit"
-    t.string "invited_by_type"
+    t.text "invited_by_type"
     t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
