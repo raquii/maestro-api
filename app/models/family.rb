@@ -9,8 +9,8 @@ class Family < ApplicationRecord
 
     def get_members
         @members = []
-        self.students.each{|s| @members << {id: s.id, role: s.role, name: "#{s.first_name} #{s.last_name}"}}
-        self.guardians.each{|g| @members << {id: g.id, role: g.role, name: "#{g.first_name} #{g.last_name}"}}
+        self.students.each{|s| @members << {id: s.id, role: "student", name: "#{s.first_name} #{s.last_name}"}}
+        self.guardians.each{|g| @members << {id: g.id, role: "guardian", name: "#{g.first_name} #{g.last_name}"}}
         @members
     end
 
