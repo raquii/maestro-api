@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2021_10_18_214644) do
   end
 
   create_table "recurring_groups", force: :cascade do |t|
-    t.datetime "end_date"
+    t.date "end_date"
   end
 
   create_table "student_profiles", force: :cascade do |t|
