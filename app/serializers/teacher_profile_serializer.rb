@@ -17,7 +17,7 @@ class TeacherProfileSerializer
   end
 
   attribute :events do |object|
-    EventSerializer.new(object.events)
+    EventSerializer.new(object.events.limit(100))
   end
 
   attribute :families do |object|
