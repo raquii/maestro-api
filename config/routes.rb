@@ -14,6 +14,12 @@ Rails.application.routes.draw do
     defaults: { format: :json }
     get '/me', to: 'users#show'
 
+    post 'events/create_recurring_event', to: 'events#create_recurring_event'
+    put 'events/update_all_event_occurances', to: 'events#update_all_event_occurances'
+    put 'events/update_future_event_occurances', to: 'events#update_future_event_occurances'
+    delete 'events/destroy_all_event_occurances', to: 'events#destroy_all_event_occurances'
+    delete 'events/destroy_future_event_occurances', to: 'events#destroy_future_event_occurances'
+
     resources :users, only: [:index, :update, :destroy]
     resources :studios, except: :destroy
     resources :events
