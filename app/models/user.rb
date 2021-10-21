@@ -20,4 +20,10 @@ class User < ApplicationRecord
   has_many :families, through: :teacher_profile
   has_many :events, through: :teacher_profile
 
+  accepts_nested_attributes_for :teacher_profile
+
+  validates :email, uniqueness: true
+  
+  
+
 end
