@@ -17,4 +17,9 @@ class TeacherProfile < ApplicationRecord
       self.create_preference!()
     end
   end
+
+  def find_next_lesson
+    self.events.where('start >= ?', DateTime.now).order(:start).limit(1)[0]
+  end
+
 end

@@ -4,8 +4,12 @@ class TeacherProfileSerializer
 
   attributes :first_name, :last_name, :phone, :address, :email
 
-  attribute :studio do |object|
-    StudioSerializer.new(object.studio)
+  attribute :studio_id do |object|
+    object.studio.id
+  end
+
+  attribute :studio_name do |object|
+    object.studio.name
   end
 
   attribute :preferences do |object|
@@ -18,6 +22,10 @@ class TeacherProfileSerializer
 
   attribute :events do |object|
     EventSerializer.new(object.events.limit(100))
+  end
+
+  attribute :next_lesson do |object|
+    object.find_next_lesson
   end
 
   attribute :families do |object|
