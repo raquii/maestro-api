@@ -1,6 +1,20 @@
 class RegistrationsController < Devise::RegistrationsController
     respond_to :json
+    before_action :configure_permitted_parameters
+
+    def new
+      # Override Devise default behaviour and create a profile as well
+      build_resource({})
+      resource.build_profile
+      respond_with self.resource
+    end
   
+    protected
+  
+    def configure_permitted_parameters
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :encrypted_password, :password_confirmation, :role, teacher_profile_attributes:[:first_name, :last_name, :email, :phone, :address]])
+    end
+
     private
 
     def respond_with(resource, _opts = {})
