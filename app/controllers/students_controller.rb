@@ -13,7 +13,7 @@ class StudentsController < ApplicationController
                 @family = Family.new(studio:current_user.studio)
                 @student.family = @family
             else
-                @family = Family.find(params[:family_id])
+                @family = Family.find(params[:student_profile][:family_id])
                 @student.family = @family
             end
             
