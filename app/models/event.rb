@@ -23,11 +23,9 @@ class Event < ApplicationRecord
        if self.recurring_group_id
             unless self.get_end_date.blank?
                 end_date = Time.parse(self.get_end_date)
-                byebug
                 weeks = (self.start - end_date).seconds.in_weeks.to_i.abs > 52 ? 52 : (self.start - end_date).seconds.in_weeks.to_i.abs
                 counter = 0
                 while counter < weeks
-                    byebug
                     newEvent = self.dup
                     newEvent.recurring_group_id = self.recurring_group_id
                     newEvent.start = self.start.weeks_since(counter+1)
