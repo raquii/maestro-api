@@ -21,7 +21,7 @@ class TeacherProfileSerializer
   end
 
   attribute :events do |object|
-    EventSerializer.new(object.events.limit(100))
+    EventSerializer.new(object.events.where('start >= ?', (DateTime.now - 1.month)).order(:start).limit(100))
   end
 
   attribute :next_lesson do |object|
