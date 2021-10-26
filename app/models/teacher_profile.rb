@@ -6,7 +6,8 @@ class TeacherProfile < ApplicationRecord
   has_many :guardians, through: :studio, class_name: 'GuardianProfile'
   has_many :families, through: :studio, inverse_of: :teacher
   has_many :events, inverse_of: :teacher_profile, dependent: :destroy
-
+  
+  accepts_nested_attributes_for :studio
   after_create :create_studio_and_preferences
 
   def create_studio_and_preferences
