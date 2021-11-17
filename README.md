@@ -8,8 +8,6 @@ __Motif__ is a studio management application for music teachers, students, and p
 
 ## General Information
 
-___
-
 Motif uses a React front-end with a Ruby on Rails back-end with Postgres for the database management.
 
 To see a demo of the application, see the [video walkthrough](https://youtu.be/0b08BDEyah8).
@@ -40,8 +38,6 @@ To see a demo of the application, see the [video walkthrough](https://youtu.be/0
 
 ## How to Use
 
-___
-
 While the app has not been deployed for public use, you may fork and clone the repo to run on your local machine. You will need both [Ruby](https://www.ruby-lang.org/en/downloads/) and [Postgresql](https://www.postgresql.org/download/) to run the back-end:
 
 1. [Fork and clone](https://docs.github.com/en/get-started/quickstart/fork-a-repo) motif-api (this repo) onto your machine.
@@ -67,8 +63,6 @@ You will need [Node](https://nodejs.org/en/) installed to run the front-end.
 The application should be available in your browser at `http://localhost:4000`
 
 ## Resources
-
-___
 
 * Built with [Ruby on Rails](https://rubyonrails.org/)
 * [Postgresql](https://www.postgresql.org/)
