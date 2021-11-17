@@ -71,3 +71,9 @@ The application should be available in your browser at `http://localhost:4000`
 ___
 
 * Built with [Ruby on Rails](https://rubyonrails.org/)
+* [Postgresql](https://www.postgresql.org/)
+* [Devise](https://github.com/heartcombo/devise)
+* [Devise-JWT](https://github.com/waiting-for-dev/devise-jwt)
+* [Devise-Invitable](https://github.com/scambra/devise_invitable)
+* [jsonapi/serializer](https://github.com/jsonapi-serializer/jsonapi-serializer)
+* [cancancan](https://github.com/CanCanCommunity/cancancan)
